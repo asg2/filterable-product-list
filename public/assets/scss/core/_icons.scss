@@ -1,0 +1,19 @@
+.ratingItem {
+  //background-image: url('/assets/images/star.png');
+  font-size: 21px;
+  &:after {content: '★';}
+  &.On {color: $rating-color;}
+}
+button.favorite {
+  //background-image: url('/assets/images/heart.png');
+  font-size: 21px;
+  &:after {content: '❤';}
+  &.On {color: $favorite-color;}
+}
+.On {
+  //background-position: top;
+}
+.Off {
+  //background-position: bottom;
+  color: $off-color;
+}

@@ -1,0 +1,32 @@
+$active-color: #56c47a;
+$border-color: #ebebeb;
+$background-color: #ffffff;
+
+$primary-color: #9b9b9b;
+$secondary-color: #686666;
+$label-color: #383838;
+
+$off-color: #dadada;
+$rating-color: #fdd201;
+$favorite-color: #e53935;
+
+$base-font-size: 13px;
+$title-font-size: 18px;
+
+$total-width: 1200px;
+$product-container-width: 960px;
+$filter-container-width: $total-width - $product-container-width;
+$product-list-width: 925px;
+$filter-list-width: 200px;
+
+$base-margin: 40px;
+$base-padding: 20px;
+$border-radius: 1.9px;
+
+
+$color-picker-list: (
+        #6a71e6, #0192ff, #61d2fe, #48dc6c, #fe4a65,
+        #ff5534, #ffa500, #fed201, #9fa0a4, #4a5357,
+        #7b007b, #ffffff, #00b39c, #83c558, #a52a2a
+); //must be the same as value in state[color] of FilterContainer
+$color-picker-show: 9; //must be the same as show in <FilterColor show={}>

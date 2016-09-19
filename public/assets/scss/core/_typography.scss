@@ -1,0 +1,113 @@
+body {
+  font: {
+    family: Helvetica, sans-serif;
+    size: $base-font-size;
+  }
+  color: $primary-color;
+}
+
+h2, h3 {
+  font: {
+    size: $title-font-size;
+    weight: normal;
+  }
+}
+
+h2 {
+  color: #010101;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.reset {
+  font-family: Verdana, sans-serif;
+  .showingFilterItem:hover > & {color: inherit;}
+  .showingFilterItem & {color: #333637; &:hover {color: red;}}
+  div%BaseFilter & {color: $active-color; &:hover {color: red;}}
+}
+
+a.clear {
+  color: $active-color; &:hover {color: red;}
+  &:before {font-family: Verdana, sans-serif;}
+}
+
+button.show-more {
+  color: $active-color;
+}
+
+label, span.label {
+  color: $label-color;
+  header & {text-transform: capitalize;}
+  span {color: $primary-color;}
+}
+
+select {
+  color: $primary-color;
+  &:enabled:hover {color: $active-color;}
+}
+
+option {
+  color: $label-color;
+  &:checked, &:hover {
+    box-shadow: inset 0 0 0 20px $active-color;
+  }
+}
+
+.select-arrow {
+  font-size: 11px;
+  color: $secondary-color;
+}
+
+.showingFilterItem:hover {
+  color: $active-color;
+}
+
+.ProductListItem {
+  color: $secondary-color;
+  a {
+    &.title {font-size: $title-font-size;}
+    &:hover {
+      color: $active-color;
+      & ~ a.title {color: $active-color;}
+    }
+  }
+}
+
+.Pagination {
+  * {
+    font-weight: bold;
+    &.currentPage {
+      font-weight: normal;
+      color: white;
+      background-color: $active-color;
+    }
+    &:first-child, &:nth-child(2), &:nth-last-child(2), &:last-child {
+      font-weight: normal;
+    }
+    &:first-child, &:last-child {
+      color: $active-color;
+      background-color: transparent;
+
+      font-size: $base-font-size * 2;
+      vertical-align: -2px;
+      margin: {top: -10px;  bottom: -5px;}
+    }
+  }
+  a:hover {
+    color: $active-color;
+  }
+
+  & + a {
+    &:hover {color: $active-color;}
+    span {
+      transform: scale(1.5, 1);
+
+      $v-space: 1px;
+      vertical-align: $v-space;
+      margin-top: -$v-space;
+    }
+  }
+}

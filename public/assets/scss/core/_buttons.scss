@@ -1,0 +1,23 @@
+a.reset {
+  display: inline-block;
+
+  &:after {content: '×';}
+  padding-bottom: 1px;
+  margin-right: -2px;
+}
+
+a.clear {
+  display: inline-block;
+
+  &:before {
+    content: '×';
+    padding: {right: 9px;}
+  }
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 0;
+}

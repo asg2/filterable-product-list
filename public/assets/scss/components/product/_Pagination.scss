@@ -1,0 +1,29 @@
+.Pagination * {
+  $space: 9px;
+
+  display: inline-block;
+  width: 18px;
+  margin: {left: $space/3; right: $space/3;}
+  padding: {top: 1px; bottom: 1px;}
+  text-align: center;
+  border: 1px solid $border-color {radius: $border-radius;}
+  &:not(span):hover {border-color: $active-color;}
+
+  &.currentPage {
+    margin: {left: $space; right: $space;}
+    border: 1px solid $active-color {radius: 2.2px;}
+    cursor: default;
+  }
+  &:first-child,
+  &:last-child,
+  &:nth-child(2):not(.currentPage),
+  &:nth-last-child(2):not(.currentPage) {
+    margin: {left: $space; right: $space;}
+    border-color: transparent;
+    &:hover {border-color: transparent;}
+    width: auto;
+  }
+
+  &:first-child {margin-right: 3 * $space - 1px;}
+  &:last-child {margin-left: 3 * $space + 1px;}
+}

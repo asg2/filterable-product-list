@@ -1,0 +1,68 @@
+body #app > div {
+  background-color: $background-color;
+  $v-line: 1px;
+
+  & > header {
+    background-color: inherit;
+    border-bottom: 1px solid #eeeeee;
+    text-align: center;
+  }
+
+  section.FilterContainer {
+    background-color: inherit;
+    float: left;
+    width: $filter-list-width;
+    $r-space: 25px;
+    padding: {
+      left: $filter-container-width - $filter-list-width - $r-space - $v-line;
+      right: $r-space;
+    }
+  }
+
+  section.ProductContainer {
+    background-color: inherit;
+    $l-space: $product-container-width - $product-list-width;
+
+    max-width: $product-container-width + $v-line;
+    min-width: 500px;
+    margin-left: $total-width - $product-container-width - $v-line;
+
+    padding: {top: $base-margin; bottom: $base-margin;}
+
+    header {
+      background-color: inherit;
+      border-left: $v-line solid $border-color;
+      padding: {left: $l-space + $base-padding; right: $base-padding;}
+    }
+
+    .ProductList {
+      background-color: inherit;
+      border-left: $v-line solid $border-color;
+
+      @for $g from 2 through 4 {
+        &.grid-#{$g} {
+          $space: (7 - $g) * 5px;
+          padding: {top: 25px - $space; left: $l-space - $space;}
+          .ProductListItem {margin: {top: $space; left: $space;}}
+        }
+      }
+      margin-bottom: -$base-padding;
+    }
+
+    footer {
+      background-color: inherit;
+      border-left: $v-line solid transparent;
+      padding: {
+        top: 75px; bottom: 77px;
+        left: $l-space + $base-padding; right: $base-padding;
+      }
+    }
+  }
+
+  & > footer {
+    background-color: inherit;
+    border-top: 1px solid $border-color;
+    clear: left;
+    text-align: center;
+  }
+}

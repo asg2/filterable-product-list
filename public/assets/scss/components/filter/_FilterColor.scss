@@ -1,0 +1,121 @@
+div.FilterColor {
+  @extend %BaseFilter;
+  $col: 5;
+
+  h3 + a {margin-bottom: 4px;}
+  & > span {
+    &:first-of-type {margin-bottom: 9px;}
+    &:last-of-type {margin-bottom: 10px;}
+  }
+
+  .Input {
+    @extend %BaseInput;
+    @extend %BaseCheckMarkInput;
+    float: left;
+
+    input:not([type="file"]) {
+      @each $color in $color-picker-list {
+        &[value="#{$color}"] {
+          & + label {
+            background-color: #{$color};
+            &:hover {background-color: darken($color, 15%);}
+          }
+          &:checked + label:hover {background-color: lighten($color, 15%);}
+        }
+      }
+
+      & + label div {
+        background-color: inherit;
+        width: $filter-list-width/$col;
+        height: $filter-list-width/$col;
+      }
+
+      &:checked + label, & + label:hover {div {
+        $space: 4px;
+        $len: $filter-list-width/$col - 2*$space;
+        $scale: 1.5;
+        font-size: $title-font-size;
+        width: $len/$scale;
+        height: $len;
+        line-height: $len;
+        transform: scaleX($scale);
+        margin: $space $len*($scale - 1)/$scale/2 + $space;
+      }}
+
+      &[value="#ffffff"]:checked + label div {
+        &:after {color: $active-color;}
+        &:hover:after {color: $off-color;}
+      }
+    }
+  }
+
+  $sel: "input:not([type='file']):not(:checked) + label:not(:hover) div";
+  &.less .Input {
+    $len: length($color-picker-list);
+    @include add-corner-radius($len, min($col, $len), $border-radius, $sel);
+  }
+  &.more .Input {
+    @include add-corner-radius($color-picker-show, $col, $border-radius, $sel);
+  }
+
+  button {
+    background-color: inherit;
+    float: left;
+    width: $filter-list-width/$col;
+    height: $filter-list-width/$col;
+    div {
+      background-color: #2b2e2f;
+      $shift: $filter-list-width/$col/2 - 1px;
+      $bar-len: 14px;
+      $bar-width: 2px;
+
+      position: relative;
+      &.horizontal-bar {
+        width: $bar-len;
+        height: $bar-width;
+        left: $shift - $bar-len/2;
+        top: $bar-len/2;
+        &:only-child {top: 0;}
+      }
+      &.vertical-bar {
+        width: $bar-width;
+        height: $bar-len;
+        left: $shift - $bar-width/2;
+        top: -$bar-width/2;
+      }
+    }
+    &:hover div {background-color: $active-color;}
+  }
+
+  br {
+    line-height: 44px;
+    clear: both
+  }
+
+  .Input input[type="file"] + label {
+    display: block;
+    margin-bottom: $base-margin - 5px;
+
+    font-weight: bold;
+    text: {
+      transform: uppercase;
+      align: center;
+    }
+
+    $border-width: 1px;
+    width: $filter-list-width - 2*$border-width;
+    height: 40px - 2*$border-width;
+    line-height: 40px - 2*$border-width;
+    border: {
+      style: solid;
+      width: $border-width;
+      color: $border-color;
+      radius: $border-radius;
+    }
+
+    &:hover {
+      color: $active-color;
+      border-color: $active-color;
+    }
+  }
+}

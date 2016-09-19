@@ -1,0 +1,91 @@
+[
+  {
+    "name": "Orientation",
+    "type": "radio",
+    "items": [
+      {"value": "landscape", "label": "horizontal", "checked": false},
+      {"value": "portrait", "label": "vertical", "checked": false}
+    ]
+  },
+  {
+    "name": "Size",
+    "type": "checkbox",
+    "items": [
+      {"value": "90x50mm", "label": "90x50mm", "checked": true},
+      {"value": "85x55mm", "label": "85x55mm", "checked": false}
+    ]
+  },
+  {
+    "name": "Customer Rating",
+    "label": "At least",
+    "type": "radio",
+    "items": [
+      {"value": "4", "checked": false},
+      {"value": "3", "checked": true},
+      {"value": "2", "checked": false},
+      {"value": "1", "checked": false}
+    ]
+  },
+  {
+    "name": "Favorite",
+    "type": "checkbox",
+    "items": [
+      {"value": "1", "label": "Only favorites", "checked": true}
+    ]
+  },
+  {
+    "name": "Industry",
+    "type": "checkbox",
+    "items": [
+      {"value": "All", "label": "All", "checked": false},
+      {"value": "Automotive", "label": "Automotive", "checked": true},
+      {"value": "Fashion", "label": "Fashion", "checked": true},
+      {"value": "Law", "label": "Law", "checked": true},
+      {"value": "IT", "label": "IT", "checked": false},
+      {"value": "Sport", "label": "Sport", "checked": true},
+      {"value": "Art", "label": "Art", "checked": false},
+      {"value": "Beauty", "label": "Beauty", "checked": false},
+      {"value": "Book", "label": "Book", "checked": false},
+      {"value": "Electronics", "label": "Electronics", "checked": false},
+      {"value": "Home", "label": "Home", "checked": false}
+    ]
+  },
+  {
+    "name": "Color",
+    "type": "checkbox",
+    "items": [
+      {"value": "#6a71e6", "checked": false},
+      {"value": "#0192ff", "checked": false},
+      {"value": "#61d2fe", "checked": true},
+      {"value": "#48dc6c", "checked": false},
+      {"value": "#fe4a65", "checked": false},
+      {"value": "#ff5534", "checked": false},
+      {"value": "#ffa500", "checked": false},
+      {"value": "#fed201", "checked": false},
+      {"value": "#9fa0a4", "checked": false},
+      {"value": "#4a5357", "checked": false},
+      {"value": "#7b007b", "checked": false},
+      {"value": "#ffffff", "checked": false},
+      {"value": "#00b39c", "checked": false},
+      {"value": "#83c558", "checked": false},
+      {"value": "#a52a2a", "checked": false}
+    ]
+  },
+  {
+    "name": "Style",
+    "type": "checkbox",
+    "items": [
+      {"value": "All", "label": "All", "checked": false},
+      {"value": "Abstraction", "label": "Abstraction", "checked": false},
+      {"value": "Geometry", "label": "Geometry", "checked": false},
+      {"value": "Men", "label": "Men", "checked": false},
+      {"value": "Women", "label": "Women", "checked": false},
+      {"value": "Children", "label": "Children", "checked": false},
+      {"value": "Music", "label": "Music", "checked": false},
+      {"value": "Vintage", "label": "Vintage", "checked": false},
+      {"value": "Flower", "label": "Flower", "checked": false},
+      {"value": "Animal", "label": "Animal", "checked": false},
+      {"value": "Cosmos", "label": "Cosmos", "checked": false}
+    ]
+  }
+]

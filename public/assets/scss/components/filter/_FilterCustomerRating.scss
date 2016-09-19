@@ -1,0 +1,35 @@
+.FilterCustomerRating {
+  @extend .FilterInputGroup;
+
+  .Input {
+    $rating-display-filter: "★★★★★"; //in .jsx must be state of rating:
+    $min-rating-filter: 1;              //{value: $max-rating-filter}, ...,
+    $max-rating-filter: 4;              //..., {value: $min-rating-filter: 1}
+    @for $i from $min-rating-filter through $max-rating-filter {
+      &:nth-last-of-type(#{$i - $min-rating-filter + 1}) input + label span {
+        &:before {content: str-slice($rating-display-filter, 1, $i);}
+        &:after {content: str-slice($rating-display-filter, $i+1, -1);}
+      }
+    }
+
+    input {
+      & + label span {
+        background-color: inherit;
+        font-size: 21px;
+        letter-spacing: 1px;
+        vertical-align: -2px;
+        line-height: 0;
+        &:before {color: $rating-color;}
+        &:after {color: $off-color;}
+      }
+      &:not(:checked) + label:hover span {
+        &:before {color: $active-color;}
+        &:after {color: lighten($active-color, 30%);}
+      }
+      &[type="checkbox"]:checked + label:hover span {
+        &:before {color: $off-color;}
+        &:after {color: lighten($off-color, 10%);}
+      }
+    }
+  }
+}

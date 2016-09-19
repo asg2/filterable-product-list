@@ -1,0 +1,68 @@
+.FilterContainer {
+  h2 {margin: {top: $base-margin - 5px; bottom: -4px;}}
+
+  a.clear {
+    background-color: inherit;
+    margin: {top: $base-margin - 4px;}
+  }
+
+  div%BaseFilter {
+    background-color: inherit;
+    margin-top: $base-margin - 5px;
+    clear: both;
+    h3 {
+      background-color: inherit;
+      text-transform: capitalize;
+      float: left;
+      margin: 0 -1px;
+      & + a {
+        background-color: inherit;
+        float: right;
+        margin-top: 3px;
+        & + br {line-height: 30px;}
+        & + span {clear: both;}
+      }
+    }
+    & > span {
+      background-color: inherit;
+      display: block;
+      margin-left: -1px;
+    }
+  }
+
+  div%InputGroupFilter {
+    @extend %BaseFilter;
+    margin-bottom: -2px;
+    text-align: right;
+    h3 + a {margin-bottom: 7px;}
+    & > span {
+      margin-bottom: 4px;
+      text-align: left;
+    }
+    br {line-height: 22px;}
+
+    button.show-more {
+      display: block;
+      margin: {top: 4px; bottom: -3px; left: 6px;}
+      padding-left: 14px;
+      div {
+        display: inline-block;
+        position: absolute;
+        left: 21px;
+
+        background-color: $active-color;
+        opacity: .6;
+
+        $shift: 4px;
+        &.horizontal-bar {
+          width: 8px; height: 2px;
+          margin: {top: 3px + $shift; bottom: 3px;}
+        }
+        &.vertical-bar {
+          width: 2px; height: 8px;
+          margin: {left: 3px; right: 3px; top: $shift;}
+        }
+      }
+    }
+  }
+}

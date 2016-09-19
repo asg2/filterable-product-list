@@ -1,0 +1,44 @@
+div.FilterOrientation {
+  @extend %BaseFilter;
+  margin-bottom: -3px;
+
+  .Input {
+    @extend %BaseInput;
+    @extend %BaseCheckMarkInput;
+    display: inline-block;
+    &:first-of-type {margin: {left: 21px; right: 53px;}}
+
+    $len: 30px;
+    label {
+      div {
+        font-size: $title-font-size;
+        margin: 14px auto;
+        width: $len;
+        height: $len;
+        line-height: $len;
+        background-color: $off-color;
+        border-radius: 1.6px;
+      }
+      &:hover {
+        color: $active-color;
+        div {background-color: $active-color;}
+      }
+    }
+    input {
+      &[value="landscape"] + label div {
+        transform: scaleX(1.5);
+      }
+      &[value="portrait"] + label div {
+        transform: scaleY(1.5) {origin: $len/2 $len/2+1px;}
+      }
+      &:checked + label {
+        color: $active-color;
+        div {background-color: $active-color;}
+        &:hover {
+          color: $off-color;
+          div {background-color: $off-color;}
+        }
+      }
+    }
+  }
+}

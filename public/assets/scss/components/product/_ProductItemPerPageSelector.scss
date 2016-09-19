@@ -1,0 +1,61 @@
+.ProductItemPerPageSelector {
+  background-color: inherit;
+  height: 0;
+
+  $height: 29px;
+  $padding-top: 6px;
+  $padding-bottom: 5px;
+  $border: 1px solid #f3f3f3;
+  $radius: 2px;
+
+  span.label {
+    width: 0;
+    position: relative;
+    left: 13px;
+  }
+
+  select {
+    background-color: inherit;
+    width: 84px + 2*nth($border, 1);
+    height: $height + 2*nth($border, 1);
+    border: $border {radius: $radius;}
+    padding-left: 46px;
+
+    option {
+      background-color: inherit;
+      height: $height - $padding-top - $padding-bottom;
+      padding: {
+        top: $padding-top;
+        bottom: $padding-bottom;
+        right: $base-padding;
+      }
+      text-align: right;
+    }
+
+    &:enabled:hover {
+      cursor: pointer;
+      border-color: $active-color;
+      & + .select-arrow {border-color: $active-color;}
+    }
+  }
+
+  .select-arrow {
+    background-color: inherit;
+    $width: 19px;
+
+    width: $width;
+    height: $height;
+    line-height: $height + 2*nth($border, 1);
+
+    display: inline-block;
+    position: relative;
+    right: $width + nth($border, 1);
+    vertical-align: top;
+
+    border: $border {
+      left: none;
+      top-right-radius: $radius;
+      bottom-right-radius: $radius;
+    }
+  }
+}

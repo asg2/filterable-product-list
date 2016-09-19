@@ -1,0 +1,5 @@
+div.FilterInputGroup {
+  @extend %InputGroupFilter;
+  &.checkbox .Input {@extend %BaseCheckboxGroupInput;}
+  &.radio .Input {@extend %BaseRadioGroupInput;}
+}

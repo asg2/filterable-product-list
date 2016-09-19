@@ -1,0 +1,93 @@
+div%BaseInput {
+  background-color: inherit;
+  label {
+    background-color: inherit;
+    &:hover {cursor: pointer;}
+  }
+  input {display: none;}
+}
+
+div%BaseGroupInput {
+  @extend %BaseInput;
+  float: left;
+  label div {
+    background-color: inherit;
+    display: inline-block;
+    margin-right: 10px;
+    width: 10px;
+    height: 10px;
+    border: {width: 1px; style: solid;}
+    vertical-align: -1px;
+  }
+  input:checked + label div {background-color: $active-color;}
+}
+
+div%BaseCheckMarkInput {
+  input:checked + label {
+    div {
+      text-align: center;
+      &:after {
+        content: '✓';
+        color: white;
+      }
+    }
+    &:hover div:after {content: '⍻';}
+  }
+}
+
+div%BaseCheckboxGroupInput {
+  @extend %BaseGroupInput;
+  @extend %BaseCheckMarkInput;
+  label {
+    div {
+      border: {color: #c9c9c9; radius: 1.2px;}
+      box-shadow: inset 0 0 0 1px #ededed;
+    }
+    &:hover {
+      color: $active-color;
+      div {
+        border-color: $active-color;
+        box-shadow: inset 0 0 0 1px lighten($active-color, 30%);
+      }
+    }
+  }
+  input:checked + label {
+    div {
+      $len: 12px;
+      $scale: .2;
+      border: none;
+      box-shadow: none;
+      width: $len/(1+$scale);
+      height: $len/(1-$scale);
+      line-height: $len/(1-$scale);
+      transform: scale(1+$scale, 1-$scale);
+      margin: {
+        left: $len*$scale/(1+$scale)/2;
+        right: $len*$scale/(1+$scale)/2 + 10px;
+        top: -$len*$scale/(1-$scale)/2;
+        bottom: -$len*$scale/(1-$scale)/2;
+      }
+      vertical-align: 1px;
+    }
+    &:hover {
+      color: $off-color;
+      div {background-color: $off-color;}
+    }
+  }
+}
+
+div%BaseRadioGroupInput {
+  @extend %BaseGroupInput;
+  label div {border: {color: #c5c5c5; radius: 50%;}}
+  input:checked + label {
+    div {
+      border-color: $active-color;
+      box-shadow: inset 0 0 0 2px white;
+    }
+    &:hover {cursor: default;}
+  }
+  input:not(:checked) + label:hover {
+    color: $active-color;
+    div {border-color: $active-color;}
+  }
+}

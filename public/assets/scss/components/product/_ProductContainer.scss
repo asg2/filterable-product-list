@@ -1,0 +1,58 @@
+.ProductContainer {
+
+  header {
+    $v-space: 4px;
+    margin-bottom: -$v-space;
+
+    span.label {
+      background-color: inherit;
+      display: inline-block;
+      margin-right: 5px;
+      &:first-child {margin-bottom: 16px;}
+    }
+
+    .ProductListGridSelector {
+      background-color: inherit;
+      float: right;
+      $space: 5px;
+      padding: $space $space 1px $space;
+      margin: {top: -4px; right: -$space;}
+    }
+
+    .ProductItemPerPageSelector {
+      background-color: inherit;
+      float: right;
+      display: inline-block;
+      margin: {top: -7px; right: -2px;}
+    }
+
+    .ShowingFiltersList {
+      background-color: inherit;
+      .showingFilterItem {
+        background-color: inherit;
+        display: inline-block;
+        margin-bottom: $v-space;
+      }
+    }
+  }
+
+  footer {
+    text-align: center;
+    .Pagination {
+      background-color: inherit;
+      display: inline-block;
+      & + a {
+        float: right;
+        margin-left: -90px; //at least width
+
+        $h-space: 5px;
+        margin-right: $h-space;
+        span {
+          margin-left: $h-space + 1px;
+          margin-right: -$h-space;
+          display: inline-block;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@mixin font-face($family, $file-name, $weight: normal, $style: normal) {
+	@font-face {
+		font-family: $family;
+		src: url('#{$file-name}-webfont.eot');
+		src: url('#{$file-name}-webfont.eot?#iefix') format('embedded-opentype'),
+		url('#{$file-name}-webfont.woff') format('woff'),
+		url('#{$file-name}-webfont.ttf') format('truetype');
+		font-weight: $weight;
+		font-style: $style;
+	}
+}
+
+@mixin add-corner-radius($len, $col, $radius, $selector) {
+	@each $i, $corner in (1, top-left),
+					     ($col, top-right),
+		                 ($col*(ceil($len/$col) - 1) + 1, bottom-left),
+	                     if($len%$col == 0, ($len, bottom-right), null) {
+		&:nth-of-type(#{$i}) #{$selector} {
+			border-#{$corner}-radius: $border-radius;
+		}
+	}
+}

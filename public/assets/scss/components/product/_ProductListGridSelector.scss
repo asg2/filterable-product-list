@@ -1,0 +1,35 @@
+.ProductListGridSelector {
+  $space: 4px;
+
+  a {
+    display: inline-block;
+    height: 14px;
+    margin: {left: $space; right: $space;}
+    &:first-child {margin-left: 0;}
+    &:last-child {margin-right: 0;}
+
+    @for $i from 1 through 3 {
+      &:nth-child(#{$i}) table {
+        border-spacing: ($i % 2 + 1) * 1px;
+        margin: -($i % 2 + 1) * 1px;
+        tr td {width: 2px * $i; height: 2px * $i;}
+      }
+    }
+    table tr {
+      @each $row, $ver in (first, top), (last, bottom) {
+        @each $col, $hor in (first, left), (last, right) {
+          &:#{$row}-child td:#{$col}-child {
+            border-#{$ver}-#{$hor}-radius: .9px;}}}
+      & td {padding: 0; background-color: $primary-color;}
+    }
+    &:hover table tr td {background-color: $active-color;}
+  }
+
+  span {
+    @extend a;
+    margin: {left: $space+1px; right: $space+1px;}
+    &:first-child {margin-right: $space+2px;}
+    &:last-child {margin-left: $space+2px;}
+    table tr td {background-color: $active-color;}
+  }
+}
