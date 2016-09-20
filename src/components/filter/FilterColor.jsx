@@ -6,7 +6,7 @@ export default class FilterColor extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			showAll: this.props.filter.items.length <= this.props.show
+			showAll: this.props.filter.items.length <= this.props.filter.show
 		};
 	}
 
@@ -24,22 +24,22 @@ export default class FilterColor extends React.Component {
 
 	render() {
 		var end = this.state.showAll ?
-			this.props.filter.items.length : this.props.show;
-		var inputItems = this.props.filter.items.slice(0, end).map(
-			function(input, i) {
+			this.props.filter.items.length : this.props.filter.show;
+		var items = this.props.filter.items.slice(0, end).map(
+			function(item, i) {
 				return (
 					<Input
 						type={this.props.filter.type}
 						name={this.props.filter.name}
-						value={input.value}
-						checked={input.checked}
+						value={item.value}
+						checked={item.checked}
 						onInputClick={this.handleInputClick.bind(this, i)}
 					/>
 				);
 			}.bind(this));
 
-		if (this.props.filter.items.length > this.props.show)
-			inputItems.push(
+		if (this.props.filter.items.length > this.props.filter.show)
+			items.push(
 				<button className="show-more"
 								onClick={this.handleClick.bind(this)}>
 					<div className="horizontal-bar" />
@@ -55,8 +55,8 @@ export default class FilterColor extends React.Component {
 					 className="reset"
 					 onClick={this.handleResetAll.bind(this)}
 				/>
-				<span className="label">{this.props.label}</span>
-				{inputItems}
+				<span className="label">{this.props.filter.label}</span>
+				{items}
 				<br />or<br />
 				<span className="label">Use color from your logo</span>
 				<Input type="file" name="upload" label="Upload logo" />
@@ -65,6 +65,3 @@ export default class FilterColor extends React.Component {
 	}
 
 }
-
-FilterColor.propTypes = {show: React.PropTypes.number};
-FilterColor.defaultProps = {show: 9};

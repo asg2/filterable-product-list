@@ -6,8 +6,7 @@ export default class FilterInputGroup extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			showAll: this.props.filter.items.length <= this.props.show
-			//checked: this.props.filter.items.map(item => item.checked)
+			showAll: this.props.filter.items.length <= this.props.filter.show
 		};
 	}
 
@@ -25,24 +24,24 @@ export default class FilterInputGroup extends React.Component {
 
 	render() {
 		var end = this.state.showAll ?
-			this.props.filter.items.length : this.props.show;
-		var inputItems = this.props.filter.items.slice(0, end).map(
-			function(input, i) {
+			this.props.filter.items.length : this.props.filter.show;
+		var items = this.props.filter.items.slice(0, end).map(
+			function(item, i) {
 				return ([
 					<br />,
 					<Input
 						type={this.props.filter.type}
 						name={this.props.filter.name}
-						value={input.value}
-						label={input.label}
-						checked={input.checked}
+						value={item.value}
+						label={item.label}
+						checked={item.checked}
 						onInputClick={this.handleInputClick.bind(this, i)}
-					/>, input.counter
+					/>, item.counter
 				]);
 			}.bind(this));
 
-		if (this.props.filter.items.length > this.props.show)
-			inputItems.push(
+		if (this.props.filter.items.length > this.props.filter.show)
+			items.push(
 				<button className="show-more"
 								onClick={this.handleClick.bind(this)}>
 					<div className="horizontal-bar" />
@@ -58,12 +57,9 @@ export default class FilterInputGroup extends React.Component {
 					 className="reset"
 					 onClick={this.handleResetAll.bind(this)}
 				/>
-				{inputItems}
+				{items}
 			</div>
 		);
 	}
 
 }
-
-FilterInputGroup.propTypes = {show: React.PropTypes.number};
-FilterInputGroup.defaultProps = {show: 10};

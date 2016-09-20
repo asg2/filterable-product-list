@@ -1118,12 +1118,6 @@ div.FilterColor .Input {
       background-color: #5e9b36; }
   div.FilterColor .Input input:not([type="file"])[value="#83c558"]:checked + label:hover {
     background-color: #add991; }
-  div.FilterColor .Input input:not([type="file"])[value="#a52a2a"] + label {
-    background-color: #a52a2a; }
-    div.FilterColor .Input input:not([type="file"])[value="#a52a2a"] + label:hover {
-      background-color: #681a1a; }
-  div.FilterColor .Input input:not([type="file"])[value="#a52a2a"]:checked + label:hover {
-    background-color: #d14a4a; }
   div.FilterColor .Input input:not([type="file"]) + label div {
     background-color: inherit;
     width: 40px;
@@ -1149,8 +1143,8 @@ div.FilterColor.less .Input:nth-of-type(5) input:not([type='file']):not(:checked
 div.FilterColor.less .Input:nth-of-type(11) input:not([type='file']):not(:checked) + label:not(:hover) div {
   border-bottom-left-radius: 1.9px; }
 
-div.FilterColor.less .Input:nth-of-type(15) input:not([type='file']):not(:checked) + label:not(:hover) div {
-  border-bottom-right-radius: 1.9px; }
+div.FilterColor.less .Input:nth-of-type input:not([type='file']):not(:checked) + label:not(:hover) div {
+  border--radius: 1.9px; }
 
 div.FilterColor.more .Input:nth-of-type(1) input:not([type='file']):not(:checked) + label:not(:hover) div {
   border-top-left-radius: 1.9px; }
@@ -1175,14 +1169,14 @@ div.FilterColor button {
     div.FilterColor button div.horizontal-bar {
       width: 14px;
       height: 2px;
-      left: 12px;
+      left: 14px;
       top: 7px; }
       div.FilterColor button div.horizontal-bar:only-child {
         top: 0; }
     div.FilterColor button div.vertical-bar {
       width: 2px;
       height: 14px;
-      left: 18px;
+      left: 20px;
       top: -1px; }
   div.FilterColor button:hover div {
     background-color: #56c47a; }

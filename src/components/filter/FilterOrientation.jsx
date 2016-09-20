@@ -12,14 +12,14 @@ export default class FilterOrientation extends React.Component {
 	}
 
 	render() {
-		var inputItems = this.props.filter.items.map(function(input, i) {
+		var items = this.props.filter.items.map(function(item, i) {
 			return (
 				<Input
 					type={this.props.filter.type}
 					name={this.props.filter.name}
-					value={input.value}
-					label={input.label}
-					checked={input.checked}
+					value={item.value}
+					label={item.label}
+					checked={item.checked}
 					onInputClick={this.handleInputClick.bind(this, i)}
 				/>
 			);
@@ -32,7 +32,7 @@ export default class FilterOrientation extends React.Component {
 					 className="reset"
 					 onClick={this.handleResetAll.bind(this)}
 				/>
-				{inputItems}
+				{items}
 			</div>
 		);
 	}

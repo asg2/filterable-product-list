@@ -12,20 +12,20 @@ export default class FilterCustomerRating extends React.Component {
 	}
 
 	render() {
-		var inputItems = this.props.filter.items.map(function(input, i) {
+		var items = this.props.filter.items.map(function(item, i) {
 			return ([
 				<Input
 					type={this.props.filter.type}
 					name={this.props.filter.name}
-					value={input.value}
-					checked={input.checked}
+					value={item.value}
+					checked={item.checked}
 					onInputClick={this.handleInputClick.bind(this, i)}
-				/>, input.counter, <br />
+				/>, item.counter, <br />
 			]);
 		}.bind(this));
-		var last = inputItems.pop();
+		var last = items.pop();
 		last.pop();
-		inputItems.push(last);
+		items.push(last);
 
 		return (
 			<div className={"FilterCustomerRating " + this.props.filter.type}>
@@ -35,7 +35,7 @@ export default class FilterCustomerRating extends React.Component {
 					 onClick={this.handleResetAll.bind(this)}
 				/>
 				<span className="label">{this.props.filter.label}</span>
-				{inputItems}
+				{items}
 			</div>
 		);
 	}

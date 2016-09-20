@@ -10,28 +10,27 @@ export default class ShowingFiltersList extends React.Component {
 		this.props.onFilterChange(flt, i);
 	}
 
-	filterListItem(label, onClick) {
+	filterListItem(label, handleClick) {
 		return (
 			<div className="showingFilterItem">
-				{label}	<a href="#" className="reset" onClick={onClick}	/>
+				{label}	<a href="#" className="reset" onClick={handleClick}	/>
 			</div>
 		);
 	}
 
 	render() {
 		var filterItems = this.props.filter.map(function (flt, f) {
-			if (!flt.items.reduce((any, item) => any || item.checked, false))
-				return;
-			if (flt.type === "radio" || flt.items.every(item => !item.label)) {
+			if (flt.items.every(item => !item.checked))
+				return null;
+			else if (flt.type === "radio" || flt.items.every(item => !item.label))
 				return this.filterListItem(flt.name,
 					this.handleFilterResetAll.bind(this, f));
-			} else {
+			else
 				return flt.items.map(function (item, i) {
 					if (item.checked && item.value !== 'All' && item.label)
 						return this.filterListItem(item.label,
 							this.handleFilterReset.bind(this, f, i));
 				}.bind(this));
-			}
 		}.bind(this));
 
 		return (

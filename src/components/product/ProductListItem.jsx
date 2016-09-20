@@ -11,7 +11,7 @@ export default class ProductListItem extends React.Component {
 				<a href='#'>
 					<img
 						src={"/assets/images/products/" + this.props.img + ".jpg"}
-						alt={"Image of " + this.props.name + " " + this.props.id}
+						alt={"Image of " + this.props.name}
 						title={this.props.industry + " (" + this.props.style + ")"}
 					/>
 				</a>

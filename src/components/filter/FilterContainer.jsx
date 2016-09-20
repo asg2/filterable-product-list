@@ -14,44 +14,37 @@ export default class FilterContainer extends React.Component {
 		this.props.onFilterChange();
 	}
 
+	filterList() {
+		return this.props.filter.map(function (flt, i) {
+			var hdl = this.handleFilterClick.bind(this, i);
+			switch (i) {
+				case 0:
+					return <FilterOrientation
+						filter={flt}
+						onFilterClick={hdl} />;
+				case 2:
+					return <FilterCustomerRating
+						filter={flt}
+						onFilterClick={hdl} />;
+				case 5:
+					return <FilterColor
+						filter={flt}
+						onFilterClick={hdl} />;
+				default:
+					return <FilterInputGroup
+						filter={flt}
+						onFilterClick={hdl} />
+			}
+		}.bind(this));
+	}
+
 	render() {
 
 		return (
 			<section className="FilterContainer">
 				<h2>Narrow results</h2>
 
-				<FilterOrientation
-					filter={this.props.filter[0]}
-					onFilterClick={this.handleFilterClick.bind(this, 0)}
-				/>
-				<FilterInputGroup
-					filter={this.props.filter[1]}
-					onFilterClick={this.handleFilterClick.bind(this, 1)}
-				/>
-				<FilterCustomerRating
-					filter={this.props.filter[2]}
-					onFilterClick={this.handleFilterClick.bind(this, 2)}
-				/>
-				<FilterInputGroup
-					filter={this.props.filter[3]}
-					onFilterClick={this.handleFilterClick.bind(this, 3)}
-				/>
-				<FilterInputGroup
-					filter={this.props.filter[4]}
-					show={7}
-					onFilterClick={this.handleFilterClick.bind(this, 4)}
-				/>
-				<FilterColor
-					label="Choose color(s)"
-					filter={this.props.filter[5]}
-					show={9}
-					onFilterClick={this.handleFilterClick.bind(this, 5)}
-				/>
-				<FilterInputGroup
-					filter={this.props.filter[6]}
-					show={9}
-					onFilterClick={this.handleFilterClick.bind(this, 6)}
-				/>
+				{this.filterList()}
 
 				<a href="#" className="clear" onClick={this.handleClearAll.bind(this)}>
 					Clear all filters

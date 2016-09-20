@@ -27,6 +27,6 @@ $border-radius: 1.9px;
 $color-picker-list: (
         #6a71e6, #0192ff, #61d2fe, #48dc6c, #fe4a65,
         #ff5534, #ffa500, #fed201, #9fa0a4, #4a5357,
-        #7b007b, #ffffff, #00b39c, #83c558, #a52a2a
+        #7b007b, #ffffff, #00b39c, #83c558//, #a52a2a
 ); //must be the same as value in state[color] of FilterContainer
-$color-picker-show: 9; //must be the same as show in <FilterColor show={}>
+$color-picker-show: 9; //must be the same as props.filter.show in FilterColor

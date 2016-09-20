@@ -42,8 +42,8 @@ export default class ProductContainer extends React.Component {
 			this.setState({page: page});
 	}
 
-	handleListChange(i) {
-		this.props.onDataChange(this.props.data[i].id);
+	handleListChange(id) {
+		this.props.onDataChange(id);
 	}
 
 	handleFilterChange(flt, i) {

@@ -36,6 +36,7 @@
   {
     "name": "Industry",
     "type": "checkbox",
+    "show": "7",
     "items": [
       {"value": "All", "label": "All", "checked": false},
       {"value": "Automotive", "label": "Automotive", "checked": true},
@@ -52,7 +53,9 @@
   },
   {
     "name": "Color",
+    "label": "Choose color(s)",
     "type": "checkbox",
+    "show": "9",
     "items": [
       {"value": "#6a71e6", "checked": false},
       {"value": "#0192ff", "checked": false},
@@ -67,13 +70,13 @@
       {"value": "#7b007b", "checked": false},
       {"value": "#ffffff", "checked": false},
       {"value": "#00b39c", "checked": false},
-      {"value": "#83c558", "checked": false},
-      {"value": "#a52a2a", "checked": false}
+      {"value": "#83c558", "checked": false}
     ]
   },
   {
     "name": "Style",
     "type": "checkbox",
+    "show": "9",
     "items": [
       {"value": "All", "label": "All", "checked": false},
       {"value": "Abstraction", "label": "Abstraction", "checked": false},

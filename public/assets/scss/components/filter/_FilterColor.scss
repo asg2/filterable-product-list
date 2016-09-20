@@ -65,7 +65,7 @@ div.FilterColor {
     height: $filter-list-width/$col;
     div {
       background-color: #2b2e2f;
-      $shift: $filter-list-width/$col/2 - 1px;
+      $shift: $filter-list-width/$col/2 + 1px;
       $bar-len: 14px;
       $bar-width: 2px;
 
