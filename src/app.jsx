@@ -27,11 +27,17 @@ export class App extends React.Component {
 	setFilter() {
 		this.state.filter.forEach(function (filter, flt) {
 			if (flt === 2) {
-				filter.okCondition = (p, f) => Math.round(parseFloat(p)) >= f;
-				filter.notSelected = (p, f, sel) => sel && !filter.okCondition(p, f);
+				filter.okCondition = (product, filter, item) => Math.round(parseFloat(
+					product[filter.name.toLowerCase()])) >= item.value;
+				filter.notSelected = (product, filter, item) =>
+				  item.checked && !filter.okCondition(product, filter, item);
 			} else {
-				filter.okCondition = (p, f) => p === f;
-				filter.notSelected = (p, f, sel, u) => !sel && p === f || u;
+				filter.okCondition = (product, filter, item) =>
+				  product[filter.name.toLowerCase()] === item.value;
+				filter.notSelected = (product, filter, item) =>
+				  !item.checked && filter.okCondition(product, filter, item)
+					  || filter.items.map(item => item.value).indexOf(
+					  	product[filter.name.toLowerCase()]) < 0;
 			}
 			filter.counters = !(flt === 0 || flt === 5);
 		});
@@ -45,15 +51,15 @@ export class App extends React.Component {
 	}
 
 	setOneFilterCounters(flt) {
-		var filter = this.state.filter;
+		var filter = this.state.filter[flt];
 		var data = this.filterDataWithAllFiltersWithoutOne(flt);
 
 		data = data.filter(product => product.isSelected);
 
-		filter[flt].items.forEach(item => item.counter = (
+		filter.items.forEach(item => item.counter = (
 			(item.value === "All") ?
-				data : data.filter(product => filter[flt].okCondition(
-					product[filter[flt].name.toLowerCase()], item.value))
+				data :
+				data.filter(product => filter.okCondition(product, filter, item))
 		).length)
 	}
 
@@ -66,13 +72,9 @@ export class App extends React.Component {
 		this.state.filter.forEach(function (filter, f) {
 			if (f === flt || filter.items.every(item => !item.checked))
 				return;
-			var values = filter.items.map(item => item.value);
 			filter.items.forEach(function (item) {
 				data.forEach(function (product) {
-					if (filter.notSelected(product[filter.name.toLowerCase()],
-							item.value,
-							item.checked,
-							values.indexOf(product[filter.name.toLowerCase()]) < 0))
+					if (filter.notSelected(product, filter, item))
 						product.isSelected = false;
 				});
 			});
