@@ -19,8 +19,12 @@ export class App extends React.Component {
 
 	setData() {
 		this.state.data.forEach(function (product) {
-			product.orientation = "landscape";
-			product.color = "#61d2fe";
+			var size = product.size.split("x").map(str => parseInt(str));
+			if (size[0] > size[1])
+				product.orientation = "landscape";
+			if (size[0] < size[1])
+				product.orientation = "portrait";
+			product.color = (Math.random() > .5) ? "#61d2fe" : "#ffa500";
 		});
 	}
 
@@ -89,7 +93,6 @@ export class App extends React.Component {
 
 	handleDataChange(id) {
 		var data = this.state.data;
-		//data.findIndex(product => product.id === id); //not working in IE;
 		var i = data.map(product => product.id).indexOf(id);
 		data[i].favorite = String(Number(!parseInt(data[i].favorite)));
 		this.setCounters();
@@ -131,11 +134,10 @@ export class App extends React.Component {
 		} else {
 			filter.items[i].checked = !filter.items[i].checked;
 
-			var j;
-			if ((j = filter.items.map(item => item.value).indexOf("All")) !== -1)
-				filter.items[j].checked = filter.items.reduce(function (all, item, i) {
-					return (i === j) ? all : all && item.checked;
-				}, true);
+			var j = filter.items.map(item => item.value).indexOf("All");
+			if (j !== -1)
+				filter.items[j].checked = filter.items.every((item, i) =>
+					(i === j) ? true : item.checked);
 		}
 	}
 
